@@ -1,21 +1,3 @@
-// Preload all province images
-const imageList = [
-    "images/pakistan.jpg",
-    "images/punjab.jpg",
-    "images/sindh.jpg",
-    "images/kpk.jpg",
-    "images/balochistan.jpg",
-    "images/gb.jpg",
-    "images/azadkashmir.jpg",
-    "images/islamabad.jpg"
-];
-
-imageList.forEach(function(src) {
-    const img = new Image();
-    img.src = src;
-}); // ← YE MISSING THA
-
-
 function showPakistan() {
 
     document.getElementById("provinceName").textContent = pakistan.name;
@@ -58,7 +40,7 @@ function showPakistan() {
 
 const map = document.getElementById("pakistanMap");
 
-map.addEventListener("load", function () {
+map.addEventListener("load", function() {
 
     showPakistan();
 
@@ -80,7 +62,6 @@ map.addEventListener("load", function () {
 
         province.style.cursor = "pointer";
 
-        // Hover
         province.addEventListener("mouseenter", function() {
 
             if (province.style.fill !== "red") {
@@ -97,10 +78,8 @@ map.addEventListener("load", function () {
 
         });
 
-        // Click
         province.addEventListener("click", function() {
 
-            // Reset all
             Object.keys(provinces).forEach(function(pid) {
 
                 const p = svg.getElementById(pid);
@@ -113,7 +92,6 @@ map.addEventListener("load", function () {
 
             });
 
-            // Highlight
             province.style.fill = "red";
             province.style.stroke = "#000";
             province.style.strokeWidth = "2";
