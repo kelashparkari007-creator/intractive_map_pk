@@ -13,7 +13,6 @@ const imageList = [
 imageList.forEach(function(src) {
     const img = new Image();
     img.src = src;
-});
 function showPakistan() {
 
     document.getElementById("provinceName").textContent = pakistan.name;
