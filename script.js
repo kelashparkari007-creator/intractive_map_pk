@@ -13,6 +13,9 @@ const imageList = [
 imageList.forEach(function(src) {
     const img = new Image();
     img.src = src;
+}); // ← YE MISSING THA
+
+
 function showPakistan() {
 
     document.getElementById("provinceName").textContent = pakistan.name;
@@ -45,18 +48,19 @@ function showPakistan() {
     const gk = document.getElementById("gk");
     gk.innerHTML = "";
 
-    pakistan.gk.forEach(function(item){
+    pakistan.gk.forEach(function(item) {
         const li = document.createElement("li");
         li.textContent = item;
         gk.appendChild(li);
     });
-
 }
+
+
 const map = document.getElementById("pakistanMap");
 
 map.addEventListener("load", function () {
-    showPakistan();
 
+    showPakistan();
 
     const svg = map.contentDocument;
 
@@ -65,11 +69,11 @@ map.addEventListener("load", function () {
         return;
     }
 
-    Object.keys(provinces).forEach(function(id){
+    Object.keys(provinces).forEach(function(id) {
 
         const province = svg.getElementById(id);
 
-        if(!province){
+        if (!province) {
             console.warn("Province ID not found:", id);
             return;
         }
@@ -77,39 +81,37 @@ map.addEventListener("load", function () {
         province.style.cursor = "pointer";
 
         // Hover
-        province.addEventListener("mouseenter", function(){
+        province.addEventListener("mouseenter", function() {
 
-            if(province.style.fill !== "red"){
+            if (province.style.fill !== "red") {
                 province.style.fill = "#90EE90";
             }
 
         });
 
-        province.addEventListener("mouseleave", function(){
+        province.addEventListener("mouseleave", function() {
 
-            if(province.style.fill !== "red"){
+            if (province.style.fill !== "red") {
                 province.style.fill = "";
             }
 
         });
 
         // Click
-        province.addEventListener("click", function(){
-           
+        province.addEventListener("click", function() {
+
             // Reset all
-            Object.keys(provinces).forEach(function(pid){
+            Object.keys(provinces).forEach(function(pid) {
 
                 const p = svg.getElementById(pid);
 
-                if(p){
+                if (p) {
                     p.style.fill = "";
                     p.style.stroke = "";
                     p.style.strokeWidth = "";
                 }
 
             });
-            
-
 
             // Highlight
             province.style.fill = "red";
@@ -149,7 +151,7 @@ map.addEventListener("load", function () {
             const gk = document.getElementById("gk");
             gk.innerHTML = "";
 
-            provinces[id].gk.forEach(function(item){
+            provinces[id].gk.forEach(function(item) {
 
                 const li = document.createElement("li");
                 li.textContent = item;
