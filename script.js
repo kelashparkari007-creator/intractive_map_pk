@@ -1,3 +1,19 @@
+// Preload all province images
+const imageList = [
+    "images/pakistan.jpg",
+    "images/punjab.jpg",
+    "images/sindh.jpg",
+    "images/kpk.jpg",
+    "images/balochistan.jpg",
+    "images/gb.jpg",
+    "images/azadkashmir.jpg",
+    "images/islamabad.jpg"
+];
+
+imageList.forEach(function(src) {
+    const img = new Image();
+    img.src = src;
+});
 function showPakistan() {
 
     document.getElementById("provinceName").textContent = pakistan.name;
